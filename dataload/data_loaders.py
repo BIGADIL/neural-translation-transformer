@@ -1,4 +1,5 @@
 import math
+import os.path
 from typing import Tuple, List
 
 import numpy as np
@@ -10,6 +11,8 @@ from torchtext.data import TabularDataset
 
 
 def load_dataset(path: str) -> List:
+    if not os.path.exists(path):
+        raise Exception("dataset does not exist")
     src = Field(
         tokenize=lambda x: "<sos>" + x + "<eos>",
         lower=True

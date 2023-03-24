@@ -11,6 +11,7 @@ from dataload.data_loaders import load_dataset, get_split_datasets, get_dataload
 from enums_and_constants import constants
 from enums_and_constants.special_tokens import SpecialTokens
 from models.transformer import Transformer
+from preload.preloader import preload_data_from_gdrive
 from tokenizer.bpe_tokenizer import load_bpe_tokenizers
 from word2vec.w2v_model import load_w2v_models
 
@@ -138,4 +139,5 @@ def compute_bleu():
 
 
 if __name__ == '__main__':
+    preload_data_from_gdrive()
     compute_bleu()

@@ -16,6 +16,8 @@ FULL_MODEL_TRAIN_LOGS = os.path.join(MAIN_DATA_PATH, "full_model", "train_logs")
 PRUNE_MODEL_CHKPT_PATH = os.path.join(MAIN_DATA_PATH, "prune_model", "chkpt")
 PRUNE_MODEL_TRAIN_LOGS = os.path.join(MAIN_DATA_PATH, "prune_model", "train_logs")
 
+DATA_URL = "https://drive.google.com/drive/folders/1zVsotEzUDgA-j1SHhBPVeehO_AiA5Lq7?usp=sharing"
+
 MODEL_DIM = 512
 NUM_ENC_DEC_LAYERS = 4
 HEADS = 8

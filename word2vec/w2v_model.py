@@ -1,3 +1,4 @@
+import os
 from typing import Tuple
 
 import numpy as np
@@ -74,6 +75,10 @@ class W2VModel:
 def load_w2v_models(src_path: str,
                     trg_path: str,
                     device: torch.device) -> Tuple[W2VModel, W2VModel]:
+    if not os.path.exists(src_path):
+        raise Exception("src w2v does not exist")
+    if not os.path.exists(trg_path):
+        raise Exception("trg w2v does not exist")
     src_w2v = W2VModel(device=device)
     src_w2v.load(path=src_path)
     trg_w2v = W2VModel(device=device)

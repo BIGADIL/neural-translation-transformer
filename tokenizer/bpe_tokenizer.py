@@ -1,3 +1,4 @@
+import os.path
 from typing import Tuple
 
 from tokenizers import Tokenizer
@@ -8,6 +9,10 @@ from enums_and_constants.special_tokens import SpecialTokens
 
 def load_bpe_tokenizers(src_path: str,
                         trg_path: str) -> Tuple[Tokenizer, Tokenizer]:
+    if not os.path.exists(src_path):
+        raise Exception("src tokenizer does not exist")
+    if not os.path.exists(trg_path):
+        raise Exception("trg tokenizer does not exist")
     src_tokenizer = Tokenizer(model=BPE(unk_token=SpecialTokens.UNKNOWN.value['token']))
     pad = SpecialTokens.PADDING.value
     src_tokenizer = src_tokenizer.from_file(path=src_path)
