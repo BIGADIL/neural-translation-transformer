@@ -6,10 +6,8 @@ from tokenizers.pre_tokenizers import Whitespace
 from tokenizers.trainers import BpeTrainer
 from torchtext.data import Example
 
-from dataload.data_loaders import load_dataset
-from enums_and_constants import constants
-from enums_and_constants.mode import Mode
-from enums_and_constants.special_tokens import SpecialTokens
+from dataload import load_dataset
+from enums_and_constants import constants, Mode, SpecialTokens
 
 
 def train_tokenizer(dataset: List[Example],

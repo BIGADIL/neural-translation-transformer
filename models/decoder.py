@@ -3,11 +3,8 @@ from typing import Tuple, Union
 import torch.nn as nn
 from torch import FloatTensor, LongTensor, BoolTensor
 
-from models.feed_forward import FeedForward
-from models.multi_head_attention import MultiHeadAttention
-from models.normalization import Norm
-from models.positional_encoder import PositionalEncoder
-from word2vec.w2v_model import W2VModel
+from models import FeedForward, MultiHeadAttention, Norm, PositionalEncoder
+from word2vec import W2VModel
 
 
 class DecoderLayer(nn.Module):
@@ -40,7 +37,7 @@ class DecoderLayer(nn.Module):
                 x: FloatTensor,
                 e_outputs: FloatTensor,
                 src_mask: BoolTensor,
-                trg_mask: BoolTensor) -> Tuple[FloatTensor, Union[float, FloatTensor]]:
+                trg_mask: BoolTensor) -> Tuple[FloatTensor, FloatTensor]:
         x2 = self.norm_1(x)
         a_1, l0_loss_1 = self.attn_1(x2, x2, x2, trg_mask)
         x = x + self.dropout_1(a_1)

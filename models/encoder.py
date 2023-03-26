@@ -3,11 +3,8 @@ from typing import Tuple, Union
 import torch.nn as nn
 from torch import LongTensor, BoolTensor, FloatTensor
 
-from models.feed_forward import FeedForward
-from models.multi_head_attention import MultiHeadAttention
-from models.normalization import Norm
-from models.positional_encoder import PositionalEncoder
-from word2vec.w2v_model import W2VModel
+from models import FeedForward, MultiHeadAttention, Norm, PositionalEncoder
+from word2vec import W2VModel
 
 
 class EncoderLayer(nn.Module):

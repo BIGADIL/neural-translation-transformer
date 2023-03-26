@@ -1,11 +1,10 @@
 import torch
 from torch.utils.data import DataLoader
 
-from dataload.data_loaders import load_dataset, get_dataloaders
-from enums_and_constants import constants
-from enums_and_constants.mode import Mode
-from tokenizer.bpe_tokenizer import load_bpe_tokenizers
-from word2vec.w2v_model import W2VModel
+from dataload import load_dataset, get_dataloaders
+from enums_and_constants import constants, Mode
+from tokenizer import load_bpe_tokenizers
+from word2vec import W2VModel
 
 
 def train_and_save_w2v_model(dataloader: DataLoader,

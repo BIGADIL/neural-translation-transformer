@@ -4,7 +4,7 @@ from typing import Tuple
 from tokenizers import Tokenizer
 from tokenizers.models import BPE
 
-from enums_and_constants.special_tokens import SpecialTokens
+from enums_and_constants import SpecialTokens
 
 
 def load_bpe_tokenizers(src_path: str,

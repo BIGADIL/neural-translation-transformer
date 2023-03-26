@@ -6,7 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch import FloatTensor, BoolTensor, Tensor
 
-from models.gate import Gate
+from models import Gate
 
 
 class MultiHeadAttention(nn.Module):

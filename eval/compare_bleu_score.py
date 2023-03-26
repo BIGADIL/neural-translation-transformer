@@ -9,13 +9,12 @@ from torch import LongTensor
 from torch.autograd import Variable
 from tqdm import tqdm
 
-from dataload.data_loaders import load_dataset, get_split_datasets, get_dataloaders
-from enums_and_constants import constants
-from enums_and_constants.special_tokens import SpecialTokens
-from models.transformer import Transformer
-from preload.preloader import preload_data_from_gdrive
-from tokenizer.bpe_tokenizer import load_bpe_tokenizers
-from word2vec.w2v_model import load_w2v_models
+from dataload import load_dataset, get_split_datasets, get_dataloaders
+from enums_and_constants import SpecialTokens, constants
+from models import Transformer
+from preload import preload_data_from_gdrive
+from tokenizer import load_bpe_tokenizers
+from word2vec import load_w2v_models
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

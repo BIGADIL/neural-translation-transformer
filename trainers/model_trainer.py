@@ -1,15 +1,16 @@
 import argparse
 
+import torch
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping, StochasticWeightAveraging
 from pytorch_lightning.loggers import TensorBoardLogger
 from torch import nn
 
-from dataload.data_loaders import *
+from dataload import load_dataset, get_split_datasets, get_dataloaders
 from enums_and_constants import constants
-from models.transformer import Transformer
-from tokenizer.bpe_tokenizer import load_bpe_tokenizers
-from word2vec.w2v_model import load_w2v_models
+from models import Transformer
+from tokenizer import load_bpe_tokenizers
+from word2vec import load_w2v_models
 
 
 def train_model(prune=False) -> None:

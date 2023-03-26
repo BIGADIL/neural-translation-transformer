@@ -7,7 +7,7 @@ from gensim.models import Word2Vec
 from torch import FloatTensor, LongTensor, vstack
 from torch.utils.data import DataLoader
 
-from enums_and_constants.mode import Mode
+from enums_and_constants import Mode
 
 
 class W2VModel:

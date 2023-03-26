@@ -8,10 +8,9 @@ from pytorch_lightning.utilities.types import STEP_OUTPUT, EPOCH_OUTPUT, EVAL_DA
 from torch import LongTensor, BoolTensor
 from torch.autograd import Variable
 
-from enums_and_constants.special_tokens import SpecialTokens
-from models.decoder import Decoder
-from models.encoder import Encoder
-from word2vec.w2v_model import W2VModel
+from enums_and_constants import SpecialTokens
+from models import Decoder, Encoder
+from word2vec import W2VModel
 
 
 class Transformer(pl.LightningModule):
