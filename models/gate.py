@@ -7,6 +7,10 @@ from torch import FloatTensor
 
 
 class Gate(nn.Module):
+    """Gate to prune transformer heads.
+    Original code: https://github.com/aiha-lab/Attention-Head-Pruning
+    """
+
     def __init__(self,
                  num_gates: int,
                  init: float = 2.0,
@@ -27,7 +31,7 @@ class Gate(nn.Module):
 
     def forward(self) -> Tuple[FloatTensor, FloatTensor]:
         if self.training:
-            u = self.distributor.sample((self.num_gates, )).to(self.gate.device)
+            u = self.distributor.sample((self.num_gates,)).to(self.gate.device)
             s = torch.log(u) - torch.log(1.0 - u)
             s = (s + self.gate) / self.beta
             s = torch.sigmoid(s)

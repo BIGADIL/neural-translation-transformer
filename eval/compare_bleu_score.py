@@ -1,9 +1,11 @@
 import os
+from typing import Tuple
 
 import numpy as np
 import torch
 from nltk.translate.bleu_score import corpus_bleu
 from tokenizers import Tokenizer
+from torch import LongTensor
 from torch.autograd import Variable
 from tqdm import tqdm
 
@@ -18,9 +20,21 @@ from word2vec.w2v_model import load_w2v_models
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-def process_batch(batch,
+def process_batch(batch: Tuple[LongTensor, LongTensor],
                   model: Transformer,
                   trg_tokenizer: Tokenizer):
+    """ Process batch: generate translation.
+
+    Parameters
+    ----------
+        batch: pair of tensors, contains source and target tokens.
+        model: transformer for translation.
+        trg_tokenizer: tokenizer to encode-decode output sequences.
+
+    Returns
+    -------
+        Tuple of original and generated translations.
+    """
     eti = SpecialTokens.END_OF_SEQ.value['idx']
 
     def is_in(row):
@@ -55,7 +69,13 @@ def process_batch(batch,
     return trg, outs
 
 
-def compute_bleu():
+def compute_bleu() -> None:
+    """ Compare bleu score for full and prune transformers.
+
+    Returns
+    -------
+        None.
+    """
     data = load_dataset(
         path=constants.DATASET_PATH
     )

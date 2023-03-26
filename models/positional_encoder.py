@@ -7,6 +7,10 @@ from torch.autograd import Variable
 
 
 class PositionalEncoder(nn.Module):
+    """ PositionalEncoder of Transformer.
+    Original code: https://github.com/SamLynnEvans/Transformer
+    """
+
     def __init__(self,
                  model_dim: int,
                  max_seq_len: int):

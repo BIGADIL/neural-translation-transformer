@@ -4,6 +4,11 @@ from torch import FloatTensor
 
 
 class FeedForward(nn.Module):
+    """ FeedForward layer of Transformer.
+    Original code: https://github.com/SamLynnEvans/Transformer
+    Use SiLU instead of ReLU.
+    """
+
     def __init__(self,
                  model_dim: int,
                  d_ff: int = 2048,

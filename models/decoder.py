@@ -11,6 +11,10 @@ from word2vec.w2v_model import W2VModel
 
 
 class DecoderLayer(nn.Module):
+    """ Decoder layer of Transformer.
+    Original code: https://github.com/SamLynnEvans/Transformer
+    """
+
     def __init__(self,
                  model_dim: int,
                  heads: int,
@@ -49,6 +53,10 @@ class DecoderLayer(nn.Module):
 
 
 class Decoder(nn.Module):
+    """ Decoder of Transformer.
+    Original code: https://github.com/SamLynnEvans/Transformer
+    """
+
     def __init__(self,
                  w2v: W2VModel,
                  model_dim: int,

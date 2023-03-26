@@ -4,6 +4,7 @@ from tokenizers import Tokenizer
 from tokenizers.models import BPE
 from tokenizers.pre_tokenizers import Whitespace
 from tokenizers.trainers import BpeTrainer
+from torchtext.data import Example
 
 from dataload.data_loaders import load_dataset
 from enums_and_constants import constants
@@ -11,9 +12,22 @@ from enums_and_constants.mode import Mode
 from enums_and_constants.special_tokens import SpecialTokens
 
 
-def train_tokenizer(dataset: List,
+def train_tokenizer(dataset: List[Example],
                     mode: Mode,
                     save_path: str):
+    """ Train tokenizer and save it.
+
+    Parameters
+    ----------
+        dataset: list of source and target examples.
+        mode: source or target examples should be used.
+        save_path: where store tokenizer.
+
+    Returns
+    -------
+        None.
+    """
+
     def iterator():
         for example in dataset:
             if mode == Mode.SRC:

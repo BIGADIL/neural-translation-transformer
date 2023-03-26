@@ -11,6 +11,18 @@ from word2vec.w2v_model import W2VModel
 def train_and_save_w2v_model(dataloader: DataLoader,
                              mode: Mode,
                              save_path: str) -> None:
+    """ Train tokenizer and save it.
+
+    Parameters
+    ----------
+        dataloader: dataloader with examples.
+        mode: source or target examples should be used.
+        save_path: where store w2v model.
+
+    Returns
+    -------
+        None.
+    """
     w2v = W2VModel(device=torch.device("cpu"))
     w2v.train(dataloader=dataloader, mode=mode)
     w2v.save(path=save_path)

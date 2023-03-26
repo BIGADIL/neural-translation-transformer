@@ -9,6 +9,17 @@ from enums_and_constants.special_tokens import SpecialTokens
 
 def load_bpe_tokenizers(src_path: str,
                         trg_path: str) -> Tuple[Tokenizer, Tokenizer]:
+    """ Load source and target BPE-tokenizers from data folder.
+
+    Parameters
+    ----------
+        src_path: path to source tokenizer.
+        trg_path: path to target tokenizer.
+
+    Returns
+    -------
+        Tuple of source and target tokenizers.
+    """
     if not os.path.exists(src_path):
         raise Exception("src tokenizer does not exist")
     if not os.path.exists(trg_path):

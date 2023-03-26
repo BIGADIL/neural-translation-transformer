@@ -15,6 +15,10 @@ from word2vec.w2v_model import W2VModel
 
 
 class Transformer(pl.LightningModule):
+    """ Transformer.
+    Original code: https://github.com/SamLynnEvans/Transformer
+    """
+
     def __init__(self,
                  src_w2v: W2VModel,
                  trg_w2v: W2VModel,

@@ -12,7 +12,17 @@ from tokenizer.bpe_tokenizer import load_bpe_tokenizers
 from word2vec.w2v_model import load_w2v_models
 
 
-def train_model(prune=False):
+def train_model(prune=False) -> None:
+    """ Train transformer.
+
+    Parameters
+    ----------
+        prune: use head pruning while model trains.
+
+    Returns
+    -------
+        None.
+    """
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     data = load_dataset(
         path=constants.DATASET_PATH

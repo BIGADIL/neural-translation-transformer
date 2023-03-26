@@ -1,5 +1,5 @@
 import math
-from typing import Tuple, Union, Optional
+from typing import Tuple, Optional
 
 import torch
 import torch.nn as nn
@@ -10,6 +10,10 @@ from models.gate import Gate
 
 
 class MultiHeadAttention(nn.Module):
+    """ MultiHeadAttention layer of Transformer.
+    Original code: https://github.com/SamLynnEvans/Transformer
+    """
+
     def __init__(self,
                  heads: int,
                  model_dim: int,
@@ -36,7 +40,7 @@ class MultiHeadAttention(nn.Module):
                 q: FloatTensor,
                 k: FloatTensor,
                 v: FloatTensor,
-                mask: Optional[BoolTensor] = None) -> Tuple[FloatTensor, Union[float, FloatTensor]]:
+                mask: Optional[BoolTensor] = None) -> Tuple[FloatTensor, FloatTensor]:
         bs = q.size(0)
 
         # perform linear operation and split into h heads
@@ -50,7 +54,6 @@ class MultiHeadAttention(nn.Module):
         k = k.transpose(1, 2)
         q = q.transpose(1, 2)
         v = v.transpose(1, 2)
-        # calculate attention using function we will define next
         scores = MultiHeadAttention.attention(q, k, v, self.head_dim, mask, self.dropout)
         l0_loss = 0
         if self.use_gate:
