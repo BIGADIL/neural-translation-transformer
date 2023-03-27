@@ -1,1 +1,1 @@
-from preloader import *
+from .preloader import *

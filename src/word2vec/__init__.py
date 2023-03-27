@@ -1,1 +1,1 @@
-from w2v_model import *
+from .w2v_model import *

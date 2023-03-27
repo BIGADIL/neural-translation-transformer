@@ -1,1 +1,1 @@
-from bpe_tokenizer import *
+from .bpe_tokenizer import *

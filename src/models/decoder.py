@@ -1,4 +1,4 @@
-from typing import Tuple, Union
+from typing import Tuple
 
 import torch.nn as nn
 from torch import FloatTensor, LongTensor, BoolTensor

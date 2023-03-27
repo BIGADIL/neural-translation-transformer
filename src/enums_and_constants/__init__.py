@@ -1,3 +1,3 @@
-from constants import *
-from mode import *
-from special_tokens import *
+from .constants import *
+from .mode import *
+from .special_tokens import *
