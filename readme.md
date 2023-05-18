@@ -9,6 +9,8 @@ Transformer model bases on https://github.com/SamLynnEvans/Transformer
 
 Attention head pruning bases on https://github.com/aiha-lab/Attention-Head-Pruning
 
+Dataset is shortened version of RU-EN dataset from http://www.manythings.org/anki.
+
 # Data
 
 All data you can find here: https://drive.google.com/drive/folders/1zVsotEzUDgA-j1SHhBPVeehO_AiA5Lq7?usp=sharing
@@ -88,3 +90,57 @@ It is sum of l0 and transformer losses.
 <img src="imgs/prune_transformer_val_loss.jpg" width="340" height="220">
 
 More information can be found in the training logs.
+
+## Compute bleu score and eval model quality
+
+You can estimate bleu score of models with command
+```bash
+python src/eval/compare_bleu_score.py
+```
+
+This script preload data from gdrive. Comment preload string if you want.
+
+<img src="imgs/bleu.jpg">
+
+As you can see full model contains 96 heads, prune model contains 24. 
+Quality of full model ~68.7, quality of prune model ~65.9. Such big values 
+of bleu connected with the fact that dataset contains a lot of similar sentence.
+An interesting fact is that the model decodes long sentences better than short ones.
+
+## Telegram bot
+
+If you have everything to inference model start you telegram bot. You only need to 
+specify your secret in **src/enums_and_constants/constants.py** and run script
+```bash
+python src/telegram_bot/bot.py
+```
+
+Start work with bot with command **/start**.
+
+<img src="imgs/start.jpg">
+
+Ask for help with command **/help**.
+
+<img src="imgs/help.jpg">
+
+You can translate only RU sentences. 
+
+<img src="imgs/cyr.jpg">
+
+Too long messages are not allowed.
+
+<img src="imgs/long.jpg">
+
+The model copes well with everyday phrases.
+
+<img src="imgs/weather.jpg">
+
+And with non-everyday.
+
+<img src="imgs/english.jpg">
+
+However, incidents happen, especially in very short phrases)
+
+<img src="imgs/hello.jpg">
+
+Please try to use the bot yourself and look for its weaknesses.
